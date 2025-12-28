@@ -23,6 +23,13 @@ const App: React.FC = () => {
   const [authForm, setAuthForm] = useState({ username: '', password: '' });
   const [authError, setAuthError] = useState('');
 
+  const refreshVault = useCallback(async (userId: number) => {
+    setIsLoading(true);
+    const photos = await apiService.getPhotos(userId);
+    setGallery(photos);
+    setIsLoading(false);
+  }, []);
+
   // Let's check if we already know who this is
   useEffect(() => {
     const cached = localStorage.getItem('spooky_booth_user');
@@ -36,14 +43,7 @@ const App: React.FC = () => {
         console.error("Corrupt session data found.");
       }
     }
-  }, []);
-
-  const refreshVault = async (userId: number) => {
-    setIsLoading(true);
-    const photos = await apiService.getPhotos(userId);
-    setGallery(photos);
-    setIsLoading(false);
-  };
+  }, [refreshVault]);
 
   const handleAuthSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

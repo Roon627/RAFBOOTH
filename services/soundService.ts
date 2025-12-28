@@ -14,11 +14,21 @@ class SoundService {
 
   constructor() {
     this.muted = localStorage.getItem('spooky_muted') === 'true';
-    // Preload sounds
+    // Preload sounds with error handling
     Object.entries(SOUNDS).forEach(([key, url]) => {
       const audio = new Audio(url);
-      audio.load();
-      this.audioCache.set(key, audio);
+      audio.addEventListener('error', () => {
+        // Silently handle audio load errors - sounds are optional
+        this.audioCache.delete(key);
+      });
+      // audio.load() doesn't return a promise, so we just call it
+      // Errors are handled via the error event listener above
+      try {
+        audio.load();
+        this.audioCache.set(key, audio);
+      } catch (e) {
+        // If load fails immediately, don't cache it
+      }
     });
   }
 
@@ -38,7 +48,9 @@ class SoundService {
     if (audio) {
       audio.currentTime = 0;
       audio.volume = 0.4;
-      audio.play().catch(e => console.log('Audio play blocked', e));
+      audio.play().catch(() => {
+        // Silently handle audio play errors - sounds are optional
+      });
     }
   }
 }

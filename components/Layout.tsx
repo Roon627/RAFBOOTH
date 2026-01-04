@@ -103,37 +103,39 @@ const Layout: React.FC<LayoutProps> = ({ children, user, isGuest, onLogout, onLo
         </div>
 
         {navItems && navItems.length > 0 && (
-          <div className="relative order-3 md:order-2 flex items-center justify-center w-full md:w-auto md:flex-1">
-            <button
-              onClick={toggleNavMenu}
-              className="md:hidden px-4 py-2 rounded-full bg-white/10 text-white/80 text-[11px] font-bold uppercase tracking-[0.35em] border border-white/15"
-            >
-              {navOpen ? 'Close Menu ✕' : 'Menu ☰'}
-            </button>
-            <nav
-              className={`${navOpen ? 'flex' : 'hidden'} md:flex flex-col md:flex-row items-center justify-center gap-3 md:gap-2 bg-white/5 md:bg-transparent border border-white/10 md:border-0 rounded-3xl md:rounded-none p-4 md:p-0 md:static absolute top-full left-1/2 md:left-auto md:top-auto -translate-x-1/2 md:translate-x-0 mt-2 md:mt-0 w-[calc(100vw-2.5rem)] max-w-sm md:w-auto`}
-            >
-              {navItems.map(item => (
-                <button
-                  key={item.key}
-                  onClick={() => handleNavClick(item.onClick)}
-                  disabled={item.disabled}
-                  className={`flex items-center justify-center gap-2 px-5 py-2 rounded-full border text-[10px] font-bold uppercase tracking-[0.35em] transition-all w-full md:w-auto ${
-                    item.active
-                      ? 'bg-orange-500/20 text-orange-200 border-orange-500/40 shadow-lg shadow-orange-500/20'
-                      : 'bg-white/5 text-white/40 border-white/10 hover:bg-white/10 hover:text-white'
-                  } ${item.disabled ? 'opacity-40 cursor-not-allowed' : ''}`.trim()}
-                >
-                  {item.icon && <span className="text-sm">{item.icon}</span>}
-                  <span>{item.label}</span>
-                  {item.badge !== undefined && (
-                    <span className="ml-2 px-2 py-0.5 rounded-full bg-white/10 text-white/60 text-[9px] font-semibold">
-                      {item.badge}
-                    </span>
-                  )}
-                </button>
-              ))}
-            </nav>
+          <div className="order-3 md:order-2 flex-1 flex justify-center">
+            <div className="relative w-full md:w-auto flex justify-center">
+              <button
+                onClick={toggleNavMenu}
+                className="md:hidden px-4 py-2 rounded-full bg-white/10 text-white/80 text-[11px] font-bold uppercase tracking-[0.35em] border border-white/15"
+              >
+                {navOpen ? 'Close Menu ✕' : 'Menu ☰'}
+              </button>
+              <nav
+                className={`${navOpen ? 'flex' : 'hidden'} md:flex flex-col md:flex-row items-stretch md:items-center justify-center gap-2 bg-[#050510]/95 md:bg-transparent border border-white/10 md:border-0 rounded-3xl md:rounded-none p-4 md:p-0 absolute md:static top-[calc(100%+0.75rem)] md:top-auto left-1/2 md:left-auto -translate-x-1/2 md:translate-x-0 w-[calc(100vw-1.5rem)] md:w-auto shadow-lg md:shadow-none z-40`}
+              >
+                {navItems.map(item => (
+                  <button
+                    key={item.key}
+                    onClick={() => handleNavClick(item.onClick)}
+                    disabled={item.disabled}
+                    className={`flex items-center justify-center gap-2 px-5 py-2 rounded-full border text-[10px] font-bold uppercase tracking-[0.35em] transition-all w-full md:w-auto ${
+                      item.active
+                        ? 'bg-orange-500/20 text-orange-200 border-orange-500/40 shadow-lg shadow-orange-500/20'
+                        : 'bg-white/5 text-white/40 border-white/10 hover:bg-white/10 hover:text-white'
+                    } ${item.disabled ? 'opacity-40 cursor-not-allowed' : ''}`.trim()}
+                  >
+                    {item.icon && <span className="text-sm">{item.icon}</span>}
+                    <span>{item.label}</span>
+                    {item.badge !== undefined && (
+                      <span className="ml-2 px-2 py-0.5 rounded-full bg-white/10 text-white/60 text-[9px] font-semibold">
+                        {item.badge}
+                      </span>
+                    )}
+                  </button>
+                ))}
+              </nav>
+            </div>
           </div>
         )}
 

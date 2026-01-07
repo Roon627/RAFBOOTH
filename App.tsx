@@ -549,17 +549,20 @@ const App: React.FC = () => {
           </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-3 gap-y-5 sm:gap-4 w-full max-w-5xl px-3 sm:px-6 mx-auto justify-items-center">
-            {TEMPLATES.map((t) => (
-              <button
-                key={t.id}
-                onClick={() => pickTemplate(t)}
-                className="group relative flex w-full max-w-[180px] flex-col items-center rounded-2xl sm:rounded-[2rem] border border-white/10 bg-white/5 p-4 sm:p-5 hover:-translate-y-2 hover:bg-white/10 hover:border-orange-500/30 transition-all shadow-xl overflow-hidden"
-              >
-                <div className={`w-full aspect-[3/4] mb-3 sm:mb-4 rounded-xl bg-gradient-to-b ${t.gradient} flex flex-col p-1.5 sm:p-2 gap-1.5 sm:gap-2 border-[2px] sm:border-[4px] ${t.accent} shadow-xl group-hover:scale-105 transition-transform`}>
-                   {[...Array(t.photoCount)].map((_, i) => (
-                     <div key={i} className="flex-1 bg-white/10 rounded-md border border-white/10 flex items-center justify-center text-2xl sm:text-3xl">🖼️</div>
-                   ))}
-                </div>
+              {TEMPLATES.map((t) => (
+                <button
+                  key={t.id}
+                  onClick={() => pickTemplate(t)}
+                  className="group relative flex w-full max-w-[180px] flex-col items-center rounded-2xl sm:rounded-[2rem] border border-white/10 bg-white/5 p-4 sm:p-5 hover:-translate-y-2 hover:bg-white/10 hover:border-orange-500/30 transition-all shadow-xl overflow-hidden"
+                >
+                  <div className={`w-full aspect-[3/4] mb-3 sm:mb-4 rounded-xl border-[2px] sm:border-[4px] ${t.accent} bg-black/40 overflow-hidden flex items-center justify-center shadow-xl group-hover:scale-105 transition-transform`}>
+                    <img
+                      src={t.frameUrl}
+                      alt={`${t.name} template preview`}
+                      className="w-full h-full object-contain"
+                      loading="lazy"
+                    />
+                  </div>
                 <span className="font-halloween text-base sm:text-lg text-white group-hover:text-orange-400 transition-colors uppercase text-center">{t.name}</span>
                 <span className="mt-1 text-[9px] sm:text-[10px] text-purple-300/50 font-bold uppercase tracking-widest">{t.photoCount} SNAPS</span>
               </button>

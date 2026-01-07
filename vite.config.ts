@@ -12,10 +12,7 @@ export default defineConfig(({ mode }) => {
         allowedHosts: [
           '*.trycloudflare.com',
           '*.cfargotunnel.com',
-          'realized-provinces-already-lot.trycloudflare.com',
-          'agencies-isp-select-actively.trycloudflare.com',
-          'not-transmit-codes-newman.trycloudflare.com',
-          'janet-quit-builder-argued.trycloudflare.com'
+          'ear-twiki-directive-answers.trycloudflare.com'
         ],
       },
       plugins: [react()],

@@ -93,7 +93,7 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
     <div className="font-admin flex flex-col gap-8 animate-fadeIn">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
-          <h2 className="text-3xl font-halloween text-orange-400 uppercase tracking-tight">
+          <h2 className="text-3xl font-admin-heading text-orange-400 tracking-[0.12em]">
             {mode === 'wall'
               ? 'Wall of Fame'
               : mode === 'stats'
@@ -184,7 +184,7 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <section className="bg-black/50 border border-white/10 rounded-3xl p-6 backdrop-blur-sm overflow-x-auto">
                 <header className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-halloween text-orange-300 uppercase">Top Creators</h3>
+                  <h3 className="text-lg font-admin-heading text-orange-300 tracking-[0.15em]">Top Creators</h3>
                   <span className="text-[10px] uppercase text-white/30 tracking-[0.4em]">Lifetime</span>
                 </header>
                 {stats.topCreators.length ? (
@@ -213,7 +213,7 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
 
               <section className="bg-black/50 border border-white/10 rounded-3xl p-6 backdrop-blur-sm overflow-x-auto">
                 <header className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-halloween text-orange-300 uppercase">Recent Uploads</h3>
+                  <h3 className="text-lg font-admin-heading text-orange-300 tracking-[0.15em]">Recent Uploads</h3>
                   <span className="text-[10px] uppercase text-white/30 tracking-[0.4em]">Latest 12</span>
                 </header>
                 {recent.length ? (
@@ -256,7 +256,7 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
         <section className="bg-black/50 border border-white/10 rounded-3xl p-6 backdrop-blur-sm">
           <div className="flex items-center justify-between mb-5">
             <div>
-              <h3 className="text-lg font-halloween text-orange-300 uppercase">User Management</h3>
+              <h3 className="text-lg font-admin-heading text-orange-300 tracking-[0.15em]">User Management</h3>
               <p className="text-[10px] uppercase tracking-[0.4em] text-white/30">{users.length} accounts</p>
             </div>
             <span className="text-[10px] uppercase tracking-[0.4em] text-white/20">Promote or remove with care</span>
@@ -332,7 +332,7 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
             <>
               <div className="flex flex-col lg:flex-row lg:items-baseline lg:justify-between gap-4">
                 <div>
-                  <h3 className="text-lg font-halloween text-orange-300 uppercase">{helpContent.projectName || 'Project Overview'}</h3>
+                  <h3 className="text-lg font-admin-heading text-orange-300 tracking-[0.15em]">{helpContent.projectName || 'Project Overview'}</h3>
                   {helpContent.pitch && (
                     <p className="mt-2 max-w-2xl text-sm text-white/70 leading-relaxed">{helpContent.pitch}</p>
                   )}
@@ -347,7 +347,7 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
                 {helpSections.map(({ title, items }) => (
                   <div key={title} className="bg-white/5 border border-white/10 rounded-2xl p-5">
-                    <h4 className="text-sm font-halloween text-orange-200 uppercase mb-3">{title}</h4>
+                    <h4 className="text-sm font-admin-heading text-orange-200 tracking-[0.12em] mb-3">{title}</h4>
                     {items.length ? (
                       <ul className="space-y-2 text-[13px] text-white/70">
                         {items.map((item, index) => (
